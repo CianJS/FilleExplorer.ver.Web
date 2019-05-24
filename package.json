@@ -1,0 +1,25 @@
+{
+  "name": "file-explorer-angularjs",
+  "version": "1.0.0",
+  "description": "File-Explorer Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon server.js --exec babel-node --presets babel-preset-env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erwinousy",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "express": "^4.17.0"
+  },
+  "dependencies": {
+    "angular": "^1.7.8",
+    "angular-animate": "^1.7.8",
+    "angular-aria": "^1.7.8",
+    "angular-material": "^1.1.18",
+    "angular-messages": "^1.7.8"
+  }
+}
