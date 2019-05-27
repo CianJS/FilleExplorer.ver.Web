@@ -26,8 +26,7 @@
         <div class="md-toolbar-tools">
           <h2 flex md-truncate>File Explorer</h2>
 
-          <md-button class="md-folder-select" ng-click="getSelect($event)" >
-            <input type="file" webkitdirectory="" directory="">
+          <md-button class="md-folder-select" ng-click="showPrompt($event)">
             폴더 선택하기
           </md-button>
           <md-button class="md-icon-button" ng-click="toggleChange()">
@@ -35,6 +34,7 @@
           </md-button>
         </div>
       </md-toolbar>
+      <li ng-repeat="i in data">{{ i }}</li>
       <md-content layout-padding="32px">
         <div ng-class="fileAlign ? 'layout-row' : 'layout-column'">
           <md-icon md-svg-src="/img/icons/file.svg"

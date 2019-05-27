@@ -1,3 +1,7 @@
 .md-folder-select {
   background-color: #33ADFF;
+  padding: -4px 0px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
 }
