@@ -34,24 +34,18 @@
           </md-button>
         </div>
       </md-toolbar>
-      <li ng-repeat="i in data">{{ i }}</li>
       <md-content layout-padding="32px">
-        <div ng-class="fileAlign ? 'layout-row' : 'layout-column'">
-          <md-icon md-svg-src="/img/icons/file.svg"
-            aria-label="Insert Drive Icon" ng-click="getFile()">
-          </md-icon>
-          <md-icon md-svg-src="/img/icons/file.svg"
-            aria-label="Insert Drive Icon">
-          </md-icon>
-          <md-icon md-svg-src="/img/icons/file.svg"
-            aria-label="Insert Drive Icon">
-          </md-icon>
-          <md-icon md-svg-src="/img/icons/file.svg"
-            aria-label="Insert Drive Icon">
-          </md-icon>
-          <md-icon md-svg-src="/img/icons/file.svg"
-            aria-label="Insert Drive Icon">
-          </md-icon>
+        <md-list ng-class="fileAlign ? 'layout-row' : 'layout-column'">
+          <md-list-item ng-repeat="file in data">
+            <div ng-if="file.type === 'file'">
+              <md-icon md-svg-src="/img/icons/file.svg"></md-icon>
+              <span>{{ file.name }}</span>
+            </div>
+            <div ng-if="file.type === 'folder'">
+              <md-icon md-svg-src="/img/icons/folder.svg"></md-icon>
+              <span>{{ file.name }}</span>
+            </div>
+          </md-list-item>
         </div>
       </md-content>
     </md-card>

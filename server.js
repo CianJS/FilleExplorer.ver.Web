@@ -30,5 +30,5 @@ app.post('/directory', (req, res) => {
     res.status(400).send(err);
   }
 
-  res.json([...files, ...folders]);
+  res.json([...files, ...folders].sort());
 })
