@@ -13,12 +13,15 @@ app.listen(app.get('port'), () => {
   console.log('AngularJS Server Starting...');
 });
 
+var folderPath;
+
 app.post('/directory', (req, res) => {
   const files = [];
   const folders = [];
-  const folderPath = req.body.path;
+  var runStatus;
 
   try {
+    folderPath = req.body.path;
     const readedFile = fs.readdirSync(folderPath, {withFileTypes: true});
 
     readedFile.filter(item => fs.statSync(path.join(folderPath, item)).isFile())
@@ -26,9 +29,27 @@ app.post('/directory', (req, res) => {
 
     readedFile.filter(item => fs.statSync(path.join(folderPath, item)).isDirectory())
       .forEach(file => folders.push({ name: file, type: 'folder' }));
+    
+    runStatus = true;
   } catch (err) {
     res.status(400).send(err);
   }
 
-  res.json([...files, ...folders].sort());
+  if (runStatus) {
+    res.json([...files, ...folders].sort());
+  }
+})
+
+app.post('/create/file', (req, res) => {
+  const fileName = req.body.name;
+
+  fs.writeFile(folderPath + '/' + fileName, '', (err) => {
+    if (err) {
+      res.status(400).send({ Error: 'no such file or directory'});
+    }
+  })
+
+  if (folderPath !== undefined) {
+    res.json({ name: fileName, type: 'file' });
+  }
 })

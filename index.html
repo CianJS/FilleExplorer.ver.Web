@@ -26,7 +26,10 @@
         <div class="md-toolbar-tools">
           <h2 flex md-truncate>File Explorer</h2>
 
-          <md-button class="md-folder-select" ng-click="showPrompt($event)">
+          <md-button class="md-folder-select" ng-click="showPrompt(createFileModal)">
+            파일 생성하기
+          </md-button>
+          <md-button class="md-folder-select" ng-click="showPrompt(selectFolderModal)">
             폴더 선택하기
           </md-button>
           <md-button class="md-icon-button" ng-click="toggleChange()">
@@ -35,13 +38,13 @@
         </div>
       </md-toolbar>
       <md-content layout-padding="32px">
-        <md-list ng-class="fileAlign ? 'layout-row' : 'layout-column'">
-          <md-list-item ng-repeat="file in data">
-            <div ng-if="file.type === 'file'">
+        <md-list ng-class="fileAlign ? 'layout-row' : 'layout-column'" layout-align="start start">
+          <md-list-item class="md-1-line" ng-repeat="file in data">
+            <div ng-class="fileAlign ? 'grid-file-align' : ''" ng-if="file.type === 'file'">
               <md-icon md-svg-src="/img/icons/file.svg"></md-icon>
               <span>{{ file.name }}</span>
             </div>
-            <div ng-if="file.type === 'folder'">
+            <div ng-class="fileAlign ? 'grid-file-align' : ''" ng-if="file.type === 'folder'">
               <md-icon md-svg-src="/img/icons/folder.svg"></md-icon>
               <span>{{ file.name }}</span>
             </div>
